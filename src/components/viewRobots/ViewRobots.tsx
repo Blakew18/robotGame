@@ -1,7 +1,6 @@
 //NPM Imports
 import { observer } from 'mobx-react';
 import React from 'react';
-import { useHistory } from "react-router-dom";
 
 //Prime React Imports
 import { DataTable } from 'primereact/datatable';
@@ -20,11 +19,6 @@ import EditDefenseName from '../editRobot/EditDefenseName';
 const ViewRobots = observer(() => {
 
   const rootStore: RootStoreType = useStores();
-  const history = useHistory();
-
-  const navigate = (page:string) => {
-    history.push(page)
-  }
 
   const displayName = (rowData:RobotStoreType) => {
     return <EditName robot={rowData}/>
