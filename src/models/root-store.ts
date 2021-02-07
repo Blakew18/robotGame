@@ -33,9 +33,8 @@ export const rootStoreModel = types
 
   export type RootStoreType = Instance<typeof rootStoreModel>;
   export const setupRootStore = async () => {
-    const data:RootStoreType = await getRootStoreData()
-    console.log(data)
-    const rs:RootStoreType = rootStoreModel.create(data)
+    const data:RootStoreType|string = await getRootStoreData()
+    const rs:RootStoreType = data === "" ? rootStoreModel.create() : rootStoreModel.create(data)
     console.log("RootStore Set Up")
     onSnapshot(rs, (newSnapshot:RootStoreType) => {
       sendRootStoreToAPI(newSnapshot)
